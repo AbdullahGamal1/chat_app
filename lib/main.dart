@@ -1,3 +1,4 @@
+import 'package:chat_app/screens/chat_page.dart';
 import 'package:chat_app/screens/login_screen.dart';
 import 'package:chat_app/screens/register_screen.dart';
 import 'package:flutter/material.dart';
@@ -21,8 +22,9 @@ class ChatApp extends StatelessWidget {
       routes: {
         LoginScreen.routeName: (context) => LoginScreen(),
         RegisterScreen.routeName: (context) => RegisterScreen(),
+        ChatPage.routeName: (context) => ChatPage()
       },
-      initialRoute: LoginScreen.routeName,
+      initialRoute: ChatPage.routeName,
       theme:
           ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.white)),
     );
