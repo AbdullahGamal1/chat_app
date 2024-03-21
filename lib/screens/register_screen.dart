@@ -49,6 +49,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       'Scholar Chat',
                       style: TextStyle(
                         fontSize: 32,
+                        fontFamily: 'Pacifico',
                         color: Colors.white,
                       ),
                     ),
@@ -134,8 +135,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
     );
   }
-
-
 
   Future<void> registerUser() async {
     var auth = FirebaseAuth.instance;

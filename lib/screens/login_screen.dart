@@ -42,13 +42,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   'assets/images/scholar.png',
                   height: 100,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Scholar Chat',
                       style: TextStyle(
                         fontSize: 32,
+                        fontFamily: 'Pacifico',
                         color: Colors.white,
                       ),
                     ),
@@ -90,7 +91,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           await loginUser();
                           showSnakBar(context, "Success Login Account");
                           Navigator.pushNamed(context, ChatPage.routeName);
-
                         } on FirebaseAuthException catch (e) {
                           String message = '';
                           if (e.code == 'user-not-found') {
