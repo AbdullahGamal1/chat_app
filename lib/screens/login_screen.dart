@@ -12,6 +12,8 @@ import '../helper/helper.dart';
 class LoginScreen extends StatefulWidget {
   static String routeName = 'LoginScreen';
 
+  const LoginScreen({super.key});
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -77,6 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 10),
                 CustomFormField(
+                  isPassword: true,
                   hintText: 'Enter Your Password',
                   onChange: (data) => password = data,
                 ),

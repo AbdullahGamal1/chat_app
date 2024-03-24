@@ -81,11 +81,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 const SizedBox(height: 10),
                 CustomFormField(
+                  isPassword: true,
                   hintText: 'Enter Your Password',
                   onChange: (data) => password = data,
                 ),
                 const SizedBox(height: 10),
                 CustomFormField(
+                  isPassword: true,
                   hintText: 'Confirm  Your Password',
                 ),
                 const SizedBox(height: 10),

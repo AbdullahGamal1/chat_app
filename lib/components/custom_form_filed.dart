@@ -4,8 +4,14 @@ class CustomFormField extends StatelessWidget {
   String? hintText;
   Function(String)? onChange;
   TextInputType? keyboardType = TextInputType.text;
+  bool isPassword;
 
-  CustomFormField({this.hintText, this.onChange, this.keyboardType});
+  CustomFormField(
+      {super.key,
+      this.hintText,
+      this.onChange,
+      this.keyboardType,
+      this.isPassword = false});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +21,7 @@ class CustomFormField extends StatelessWidget {
             return 'field is required';
           }
         },
+        obscureText: isPassword,
         onChanged: onChange,
         keyboardType: keyboardType,
         decoration: InputDecoration(
