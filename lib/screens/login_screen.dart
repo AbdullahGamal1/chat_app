@@ -90,7 +90,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         try {
                           await loginUser();
                           showSnakBar(context, "Success Login Account");
-                          Navigator.pushNamed(context, ChatPage.routeName);
+                          Navigator.pushNamed(context, ChatPage.routeName,
+                              arguments: email);
                         } on FirebaseAuthException catch (e) {
                           String message = '';
                           if (e.code == 'user-not-found') {
@@ -118,8 +119,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(
-                              context, RegisterScreen.routeName);
+                          Navigator.pushNamed(context, RegisterScreen.routeName,
+                              arguments: email);
                         },
                         child: const Text('Create Account ',
                             style: TextStyle(color: Color(0xffC7EDE6))))
