@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 class ChatPage extends StatelessWidget {
   static String routeName = 'ChatPage';
   TextEditingController controller = TextEditingController();
+  final ScrollController _myController = ScrollController();
 
   ChatPage({super.key});
 
@@ -16,8 +17,9 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var email = ModalRoute.of(context)!.settings.arguments;
     return StreamBuilder<QuerySnapshot>(
-      stream: messages.orderBy(KCreatedAt).snapshots(),
+      stream: messages.orderBy(KCreatedAt, descending: true).snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           List<Message> messagesList = [];
@@ -46,8 +48,11 @@ class ChatPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ListView.builder(
-                      itemBuilder: (_, index) =>
-                          ChatBubble(message: messagesList[index]),
+                      reverse: true,
+                      controller: _myController,
+                      itemBuilder: (_, index) => messagesList[index].id == email
+                          ? ChatBubble(message: messagesList[index])
+                          : ChatBubbleForFreind(message: messagesList[index]),
                       itemCount: messagesList.length,
                     ),
                   ),
@@ -57,8 +62,12 @@ class ChatPage extends StatelessWidget {
                       autofocus: true,
                       controller: controller,
                       onSubmitted: (data) {
-                        messages
-                            .add({KMessage: data, KCreatedAt: DateTime.now()});
+                        messages.add({
+                          KMessage: data,
+                          KCreatedAt: DateTime.now(),
+                          'id': email
+                        });
+                        animated();
                         controller.clear();
                       },
                       decoration: const InputDecoration(
@@ -73,5 +82,16 @@ class ChatPage extends StatelessWidget {
         }
       },
     );
+  }
+
+  void jumpTo() {
+    _myController.jumpTo(
+      _myController.position.maxScrollExtent,
+    );
+  }
+
+  void animated() {
+    _myController.animateTo(0,
+        duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
   }
 }

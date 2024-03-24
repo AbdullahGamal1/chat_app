@@ -25,7 +25,7 @@ class ChatApp extends StatelessWidget {
         RegisterScreen.routeName: (context) => RegisterScreen(),
         ChatPage.routeName: (context) => ChatPage()
       },
-      initialRoute: ChatPage.routeName,
+      initialRoute: LoginScreen.routeName,
       theme:
           ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.white)),
     );
