@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomBottom extends StatelessWidget {
-  CustomBottom({required this.text, this.onTap});
+  CustomBottom({super.key, required this.text, this.onTap});
 
   String? text;
   Function? onTap;
