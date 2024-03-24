@@ -42,10 +42,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   'assets/images/scholar.png',
                   height: 100,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Scholar Chat',
                       style: TextStyle(
                         fontSize: 32,
