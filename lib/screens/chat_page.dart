@@ -25,7 +25,6 @@ class ChatPage extends StatelessWidget {
             messagesList.add(Message.fromJson(snapshot.data!.docs[i]));
           }
           ;
-          // print(snapshot.data!.docs[0][KMessage]);
           return Scaffold(
               appBar: AppBar(
                 backgroundColor: KPrimaryColor,
